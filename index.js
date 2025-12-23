@@ -1,6 +1,7 @@
 import express from 'express';
 import { loadMongoConfig } from './config/mongoConfig.js';
 import User from './model/User.js';
+import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
@@ -10,7 +11,7 @@ app.listen(PORT, () =>{
 
 loadMongoConfig();
 
-
+app.use(cors())
 app.use(express.json()); //Indicamos qu elas peticiones va a ser siempre en formato .json
 
 app.post("/api/users",async (req,res) =>{
